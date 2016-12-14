@@ -1,4 +1,4 @@
-vendor
+app/vendor
+app/dist
 node_modules
-dist
 .DS_Store

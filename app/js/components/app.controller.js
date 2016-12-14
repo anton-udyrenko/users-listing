@@ -7,6 +7,7 @@
     function AppController($scope) {
         var vm = this;
 
+        // Test great ctrl!
         activate();
 
         function activate() {
