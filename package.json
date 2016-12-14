@@ -1,0 +1,22 @@
+{
+  "name": "users-listing",
+  "version": "1.0.0",
+  "description": "users-listing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anton-udyrenko/users-listing.git"
+  },
+  "author": "Anton Udyrenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anton-udyrenko/users-listing/issues"
+  },
+  "homepage": "https://github.com/anton-udyrenko/users-listing#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

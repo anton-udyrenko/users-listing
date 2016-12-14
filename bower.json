@@ -1,0 +1,13 @@
+{
+  "author": "Anton Udyrenko",
+  "name": "users-listing",
+  "license": "MIT",
+  "resolutions": {
+    "angular": "~1.5.8"
+  },
+  "dependencies": {
+    "angular": "~1.5.8",
+    "angular-animate": "~1.5.8",
+    "bootstrap": "~3.3"
+  }
+}
