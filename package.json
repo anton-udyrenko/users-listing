@@ -17,6 +17,14 @@
   },
   "homepage": "https://github.com/anton-udyrenko/users-listing#readme",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "~2.5.2",
+    "gulp-less": "~3.0.3",
+    "gulp-less-import": "^1.0.0",
+    "gulp-ngmin": "^0.3.0",
+    "gulp-uglify": "^1.4.1",
+    "vinyl-paths": "^2.1.0",
+    "run-sequence": "~1.1.0"
   }
 }
