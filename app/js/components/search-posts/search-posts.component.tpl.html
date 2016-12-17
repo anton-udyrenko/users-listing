@@ -1,0 +1,8 @@
+<div data-ng-class="{'local-search': $ctrl.userId}">
+    <fa name="search" size="1"></fa>
+    <input
+        type="text"
+        data-ng-model="$ctrl.searchQuery"
+        data-ng-blur="$ctrl.makeSearch()"
+        placeholder="Search posts...">
+</div>

@@ -1,4 +1,11 @@
-'use strict';
+(function () {
+    'use strict';
 
-//test
-angular.module('usersListing', []);
+    angular.module('usersListing', [
+        'ui.router',
+        'ngLodash',
+        'restangular',
+        'picardy.fontawesome',
+        'ngScrollbars'
+    ]);
+}());

@@ -1,15 +1,28 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="usersListing">
 <head>
 	<meta charset="utf-8">
 	<title>Users Listing</title>
-	<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" />
+	<!-- <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" /> -->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Roboto:300,400|Rokkitt" rel="stylesheet">
 	<link rel="stylesheet" href="dist/assets/css/app.css" />
 
-	<script src="vendor/angular/angular.js"></script>
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/lodash/lodash.js"></script>
+    <script src="vendor/ng-lodash/build/ng-lodash.js"></script>
+    <script src="vendor/restangular/src/restangular.js"></script>
+	<script src="vendor/angular-fontawesome/dist/angular-fontawesome.js"></script>
+    <script src="vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="vendor/ng-scrollbars/dist/scrollbars.min.js"></script>
+
 	<script src="dist/assets/js/app.js"></script>
+    <base href="/">
 </head>
 <body>
-	<h1 class="foobar">The Foobar</h1>
+    <div data-ui-view class="ui-view-wrapper"></div>
 </body>
 </html>

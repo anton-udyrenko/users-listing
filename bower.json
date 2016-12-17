@@ -8,6 +8,12 @@
   "dependencies": {
     "angular": "~1.5.8",
     "angular-animate": "~1.5.8",
-    "bootstrap": "~3.3"
+    "angular-ui-router": "~0.3.1",
+    "bootstrap": "~3.3",
+    "lodash": "^4.0",
+    "ng-lodash": "~0.3.0",
+    "restangular": ">=1.5.1",
+    "angular-fontawesome": "^1.0.0",
+    "ng-scrollbars": "0.0.7"
   }
 }

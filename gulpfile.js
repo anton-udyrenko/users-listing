@@ -22,7 +22,7 @@ gulp.task('clean', function () {
  */
 gulp.task('app.css', function () {
     return task = gulp
-        .src('app/less/**/*.less')
+        .src(['app/less/main.less', 'app/less/**/*.less'])
         .pipe(concat('app.css'))
         .pipe(less())
         .pipe(gulp.dest('app/dist/assets/css'));
@@ -33,7 +33,7 @@ gulp.task('app.css', function () {
  */
 gulp.task('app.js', function () {
     return task = gulp
-        .src(['app/js/app.module.js', 'app/js/components/**/*.js'])
+        .src(['app/js/app.module.js', 'app/js/**/*.js'])
         .pipe(concat('app.js'))
         .pipe(ngAnnotate())
         // .pipe(uglify())
