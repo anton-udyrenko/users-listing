@@ -1,0 +1,11 @@
+<uli-chart data-users="$ctrl.users" class="uli-chart uli-row uli-component"></uli-chart>
+
+<uli-search-posts class="uli-search-posts uli-row uli-component"></uli-search-posts>
+
+<div class="uli-row">
+    <uli-user-item
+        data-ng-repeat="user in $ctrl.users"
+        data-user="user"
+        class="uli-user-item uli-row uli-component">
+    </uli-user-item>
+</div>
