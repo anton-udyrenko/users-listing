@@ -1,6 +1,7 @@
-<div data-ng-class="{'local-search': $ctrl.userId}">
+<div class="search-content-wrapper" data-ng-class="{'local-search': $ctrl.userId}">
     <fa name="search" size="1"></fa>
     <input
+        id="searchInput"
         type="text"
         data-ng-model="$ctrl.searchQuery"
         data-ng-blur="$ctrl.makeSearch()"

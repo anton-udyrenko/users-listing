@@ -1,10 +1,11 @@
 <div class="user-item-header uli-row">
-    <div class="title uli-col-50" data-ng-click="$ctrl.toggleInfoBlock()">
-        <fa name="user-o" size="1"></fa> {{$ctrl.user.name}},
-        <fa name="file-text-o" size="1"></fa> {{$ctrl.user.userPosts.length}} /
-        <fa name="folder" size="1"></fa>{{$ctrl.user.userAlbums.length}}
+    <div class="title uli-col-33" data-ng-click="$ctrl.toggleInfoBlock()">
+        <fa name="user-o" size="1"></fa> {{$ctrl.user.name}}
     </div>
-    <uli-search-posts data-user-id="$ctrl.user.id" class="uli-col-50 uli-search-posts uli-component"></uli-search-posts>
+    <div class="total uli-col-33" data-ng-click="$ctrl.toggleInfoBlock()">
+        Total: {{$ctrl.user.userPosts.length}} <fa name="file-text-o" size="1"></fa> / {{$ctrl.user.userAlbums.length}} <fa name="folder" size="1"></fa>
+    </div>
+    <uli-search-posts data-user-id="$ctrl.user.id" class="uli-col-33 uli-search-posts uli-component"></uli-search-posts>
 </div>
 
 <div class="user-item-body uli-row" data-ng-show="$ctrl.isInfoBlockShown">
@@ -16,7 +17,10 @@
     <div data-ng-repeat="post in $ctrl.user.userPosts track by $index"
         class="post-row uli-row"
         data-ng-hide="post.isHidden">
-        <div class="uli-col-50 text-ellipsis"><fa name="file-text-o" size="1"></fa> {{$index + 1}}. {{post.title}}</div>
-        <div class="uli-col-50 text-ellipsis"><fa name="folder" size="1"></fa> id: {{post.rels.album.id}}, {{post.rels.album.title}}</div>
+        <div class="uli-col-50 text-ellipsis"><fa name="file-text-o" size="1"></fa> {{$index + 1}}. "{{post.title}}"</div>
+        <div class="uli-col-50 text-ellipsis"
+            data-ng-click="$ctrl.openAlbumsDialog(post.rels.album)">
+            <fa name="folder" size="1"></fa> id: {{post.rels.album.id}}, "{{post.rels.album.title}}"
+        </div>
     </div>
 </div>

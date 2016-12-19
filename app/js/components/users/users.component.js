@@ -10,25 +10,8 @@
             controller: UliUsersController
         });
 
-    function UliUsersController($http, $q, $state, lodash, Restangular, UsersDataService) {
+    function UliUsersController() {
         var ctrl = this;
-
-        //
-        // Public methods
-        //
-        ctrl.goToUserDetails = function goToUserDetails(event, id) {
-            $state.go('app.user', {
-                id: id
-            });
-        }
-
-        //
-        // Private methods
-        //
-
-        function onInit() {
-
-        }
 
     }
 }());

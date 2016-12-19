@@ -7,17 +7,16 @@
             controller: UliUserDetailsController
         });
 
-    function UliUserDetailsController($http, $state, $stateParams) {
+    function UliUserDetailsController($http, $stateParams, UsersDataService) {
         var ctrl = this;
+
 
         ctrl.$onInit = onInit;
 
-        console.log($stateParams);
-
         function onInit () {
-            $http.get('http://jsonplaceholder.typicode.com/users/' + $stateParams.id)
+            UsersDataService.getUser($stateParams.id)
                 .then(function(data) {
-                    ctrl.user = data.data;
+                    ctrl.user = data;
                 });
         }
     }

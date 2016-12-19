@@ -1,0 +1,10 @@
+<div class="popup-content-wrapper">
+    <div class="popup-title uli-row">
+        <div class="uli-col-25"><fa name="user-o" size="1"></fa> {{$ctrl.user.name}}</div>
+        <div class="uli-col-75"><fa name="folder" size="1"></fa> {{$ctrl.album.title}}</div>
+    </div>
+    <div class="popup-post-row uli-row" data-ng-repeat="post in $ctrl.album.rels.posts">
+        <div class="uli-col-25"><fa name="file-text-o" size="1"></fa> {{post.title}}:</div>
+        <div class="uli-col-75">"{{post.body}}</div>
+    </div>
+</div>

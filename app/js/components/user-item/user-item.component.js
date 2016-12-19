@@ -10,7 +10,7 @@
             controller: UliUserItemController
         });
 
-    function UliUserItemController($filter, $q, $scope, $state, $timeout, lodash, Restangular, UsersDataService) {
+    function UliUserItemController($scope, $state, lodash, ngDialog) {
         var ctrl = this;
 
         ctrl.isInfoBlockShown = false;
@@ -19,6 +19,7 @@
 
         ctrl.toggleInfoBlock = toggleInfoBlock;
         ctrl.goToUserDetails = goToUserDetails;
+        ctrl.openAlbumsDialog = openAlbumsDialog;
 
         //
         // Public methods
@@ -26,18 +27,34 @@
 
 
         /**
-         *
+         * Toggles block with posts/albums content
          */
         function toggleInfoBlock() {
             ctrl.isInfoBlockShown = !ctrl.isInfoBlockShown;
         }
 
         /**
-         *
+         * Redirects to user details view (forfuture needs, not required now)
          */
         function goToUserDetails(event, id) {
             $state.go('app.user', {
                 id: id
+            });
+        }
+
+        /**
+         * Creates and opens new user dialog
+         */
+        function openAlbumsDialog(album) {
+            ngDialog.open({
+                template: '<uli-albums-popup data-album="ngDialogData.album" data-user="ngDialogData.user" class="uli-albums-popup" data-close-dialog="closeThisDialog()"></uli-albums-popup>',
+                plain: true,
+                scope: $scope,
+                data: {
+                    album: album,
+                    user: ctrl.user
+                },
+                className: 'ngdialog-theme-default ngdialog-theme-uli'
             });
         }
 
@@ -46,18 +63,16 @@
         //
 
         /**
-         *
+         * Init method
          */
         function onInit() {
             $scope.$on('search-posts_make-search', makeSearchForThisUser);
         }
 
         /**
-         *
+         * Performs posts search
          */
         function makeSearchForThisUser(ev, data) {
-            console.log('makeSearchForThisUser!', data, (data.userId === ctrl.user.id || data.userId === null));
-
             if (data.userId === ctrl.user.id || data.userId === null) {
                 if (data.searchQuery) {
 

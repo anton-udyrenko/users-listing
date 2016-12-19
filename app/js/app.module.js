@@ -6,6 +6,8 @@
         'ngLodash',
         'restangular',
         'picardy.fontawesome',
-        'ngScrollbars'
+        'ngScrollbars',
+        'highcharts-ng',
+        'ngDialog'
     ]);
 }());

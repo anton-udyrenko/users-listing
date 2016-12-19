@@ -4,7 +4,7 @@
     angular.module('usersListing')
         .factory('UsersDataService', UsersDataService);
 
-    function UsersDataService($q, lodash, Restangular) {
+    function UsersDataService($q, $timeout, lodash, Restangular) {
         return {
             getUsers: getUsers,
             getUser: getUser,
@@ -54,28 +54,40 @@
         }
 
         /**
-         *
+         * Resolver method, used in ui-router before main users controller inits
          */
         function resolver() {
+            var usersData;
+
             return getUsers()
                 .then(function(users) {
+                    var postsAndAlbumsRequests = [];
 
-                    // Buld relations for each user object
-                    lodash.forEach(users, function(user) {
+                    // Save received users data to an outer variable
+                    usersData = users;
 
-                        // Get all posts and albums related to user
-                        // and then bind relations directly to user object
-                        $q.all([getUserPosts(user.id), getUserAlbums(user.id)])
-                            .then(function(resolvedArray){
-                                user.userPosts = resolvedArray[0];
-                                user.userAlbums = resolvedArray[1];
-
-                                // Generate posts/albums relations randomly
-                                generateRandomAlbumPostsRelations(user.userAlbums, user.userPosts);
-                            });
+                    // For each user object create a combined request
+                    // to get all related posts and albums
+                    lodash.forEach(usersData, function(user) {
+                        postsAndAlbumsRequests.push($q.all([getUserPosts(user.id), getUserAlbums(user.id)]));
                     });
 
-                    return users;
+                    // Return all combined promises like a single promise
+                    return $q.all(postsAndAlbumsRequests);
+                })
+                .then(function(resolvedPostsAndAlbums) {
+
+                    console.log('resolvedPostsAndAlbums?', resolvedPostsAndAlbums);
+                    // Bind related posts and albums directly to the each user object
+                    // and generate random relations between posts and albums for that user
+                    lodash.forEach(usersData, function(user, index) {
+                        user.userPosts = resolvedPostsAndAlbums[index][0];
+                        user.userAlbums = resolvedPostsAndAlbums[index][1];
+
+                        generateRandomAlbumPostsRelations(user.userAlbums, user.userPosts);
+                    });
+
+                    return usersData;
                 })
                 .catch(function(error){
                     console.error('Server Error: ', error);
@@ -87,16 +99,17 @@
         //
 
         /**
-         *
+         * Generates random relations between posts and albums for that user
          */
         function generateRandomAlbumPostsRelations(albums, posts) {
             angular.forEach(posts, function(post){
                 var randomAlbum = albums[lodash.random(0, albums.length-1)];
 
-                post.rels = post.rels|| {};
+                post.rels = post.rels || {};
                 post.rels.album = randomAlbum;
                 post.albumId = post.rels.album.id;
 
+                // Set property to be used for search results displaying
                 post.isHidden = false;
 
                 randomAlbum.rels = randomAlbum.rels || {posts: []};
